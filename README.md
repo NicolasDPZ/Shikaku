@@ -16,11 +16,4 @@ make clean
 Los tableros son archivos .txt con el siguiente formato:
 "<filas> <columnas>"
 "<valores separados por espacios, 0 = celda vacía>"
-Por ejemplo, un tablero 5×5:
-5 5
-3 0 0 4 0
-4 0 3 0 0
-0 0 0 2 0
-4 0 0 4 0
-0 0 1 0 0
 La suma de todos los números debe ser igual al total de celdas del tablero (filas × columnas), de lo contrario el tablero no tiene solución válida.
