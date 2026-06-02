@@ -1,4 +1,5 @@
 #include "interfaz.h"
+#include "solucionador.h"
 
 void Ayudas()
 {
@@ -6,9 +7,10 @@ void Ayudas()
     cout << "  Mostrar ayudas:       h \n";
     cout << "  Cargar un tablero:    c <nombre del archivo>  \n";
     cout << "  Jugar:                j <fila> <columna> <inicio> <final>\n";
+    cout << "  Resolver (sintetico): r\n";
     cout << "  Limpiar el tablero:   l\n";
     cout << "  Mostrar el tablero:   m\n";
-    cout << "  Verificar solución:   v\n";
+    cout << "  Verificar solucion:   v\n";
     cout << "  Salir del juego:      s\n";
 }
 
@@ -70,6 +72,17 @@ void Juego(Tablero &tablero)
             break;
         }
 
+        case 'r':
+        {
+            // Solucionador sintetico: intenta resolver el tablero solo.
+            if (resolverTablero(tablero))
+            {
+                cout << "Solucion encontrada!\n";
+                mostrarRegiones(tablero);
+            }
+            break;
+        }
+
         case 'l':
         {
             tablero = Tablero();
@@ -86,9 +99,9 @@ void Juego(Tablero &tablero)
         case 'v':
         {
             if (validarTablero(tablero))
-                cout << "¡Solución válida!\n";
+                cout << "Solucion valida!\n";
             else
-                cout << "La solución tiene errores.\n";
+                cout << "La solucion tiene errores.\n";
             break;
         }
 
