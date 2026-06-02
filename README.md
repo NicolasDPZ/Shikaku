@@ -14,6 +14,6 @@ make clean
 
 ## Formato de los tableros
 Los tableros son archivos .txt con el siguiente formato:
-"<filas> <columnas>"
-"<valores separados por espacios, 0 = celda vacía>"
+<filas> <columnas>
+<valores separados por espacios, 0 = celda vacía>"
 La suma de todos los números debe ser igual al total de celdas del tablero (filas × columnas), de lo contrario el tablero no tiene solución válida.
