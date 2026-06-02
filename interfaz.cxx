@@ -39,23 +39,29 @@ void Juego(Tablero &tablero)
             break;
 
         case 'c':
+        //Cargar un tablero desde un archivo de la carpeta Tableros
         {
             string archivo;
             ss >> archivo;
             if (archivo.empty())
             {
                 cout << "Uso: c <nombre del archivo>\n";
+                break;
             }
-            else if (cargarTablero(archivo, tablero))
-            {
-                cout << "Tablero cargado desde: " << archivo << "\n";
-            }
+ 
+            string rutaTableros = "Tableros/" + archivo;
+            bool cargado = cargarTablero(rutaTableros, tablero);
+ 
+            if (!cargado)
+                cargado = cargarTablero(archivo, tablero);
+ 
+            if (cargado)
+                cout << "Tablero cargado exitosamente.\n";
             else
-            {
-                cout << "Error al cargar '" << archivo << "'. Verifica que el archivo exista.\n";
-            }
+                cout << "Error al cargar '" << archivo << "'. Verifica que el archivo exista en Tableros/ o en el directorio actual.\n";
             break;
         }
+
 
         case 'j':
         {
