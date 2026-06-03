@@ -3,13 +3,16 @@
 
 #include <iostream>
 #include <vector>
-#include "tablero.h"
 #include <string>
 #include <sstream>
+#include "tablero.h"
+#include "hacerMovimiento.h"
+#include "borrarMovimiento.h"
+
 
 using namespace std;
 
 void Ayudas();
-void Juego(Tablero &tablero , vector<vector<int>> historial);
-bool cargarTablero(const string &ruta, Tablero &tablero);
+void Juego(Tablero &tablero, vector<vector<int>> &historial);
+
 #endif

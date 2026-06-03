@@ -7,7 +7,7 @@ CXXFLAGS = -std=c++17 -Wall -Wextra
 
 TARGET   = shikaku
 
-SRCS     = shikaku.cxx interfaz.cxx tablero.cxx solucionador.cxx
+SRCS     = shikaku.cxx interfaz.cxx tablero.cxx solucionador.cxx hacerMovimiento.cxx borrarMovimiento.cxx 
 OBJS     = $(SRCS:.cxx=.o)
 
 # ------------------------------------------------------------
