@@ -10,6 +10,6 @@
 using namespace std;
 
 void Ayudas();
-void Juego(Tablero &tablero);
-
+void Juego(Tablero &tablero , vector<vector<int>> historial);
+bool cargarTablero(const string &ruta, Tablero &tablero);
 #endif

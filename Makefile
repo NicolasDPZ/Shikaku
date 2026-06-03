@@ -33,6 +33,12 @@ tablero.o: tablero.cxx tablero.h
 solucionador.o: solucionador.cxx solucionador.h tablero.h
 	$(CXX) $(CXXFLAGS) -c solucionador.cxx
 
+hacerMovimiento.o: hacerMovimiento.cxx hacerMovimiento.h tablero.h
+	$(CXX) $(CXXFLAGS) -c hacerMovimiento.cxx
+
+borrarMovimiento.o: borrarMovimiento.cxx borrarMovimiento.h tablero.h
+	$(CXX) $(CXXFLAGS) -c borrarMovimiento.cxx
+
 # ------------------------------------------------------------
 #  Ejecutar el juego directamente con: make run
 # ------------------------------------------------------------

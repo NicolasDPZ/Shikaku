@@ -1,12 +1,15 @@
 #include "interfaz.h"
 #include "solucionador.h"
+#include "hacerMovimiento.h"
+#include "borrarMovimiento.h"
 
 void Ayudas()
 {
     cout << "=== Comandos disponibles: === \n";
     cout << "  Mostrar ayudas:       h \n";
     cout << "  Cargar un tablero:    c <nombre del archivo>  \n";
-    cout << "  Jugar:                j <fila> <columna> <inicio> <final>\n";
+    cout << "  Jugar:                j <fila1> <columna1> <fila2> <columna2>\n";
+    cout << "  Deshacer:             d <fila1> <columna1> <fila2> <columna2>\n";
     cout << "  Resolver (sintetico): r\n";
     cout << "  Limpiar el tablero:   l\n";
     cout << "  Mostrar el tablero:   m\n";
@@ -14,7 +17,7 @@ void Ayudas()
     cout << "  Salir del juego:      s\n";
 }
 
-void Juego(Tablero &tablero)
+void Juego(Tablero &tablero, vector<vector<int>> historial)
 {
 
     Ayudas();
@@ -35,11 +38,12 @@ void Juego(Tablero &tablero)
         switch (comando)
         {
         case 'h':
+        {
             Ayudas();
             break;
+        }   
 
-        case 'c':
-        //Cargar un tablero desde un archivo de la carpeta Tableros
+1        case 'c':
         {
             string archivo;
             ss >> archivo;
@@ -48,33 +52,38 @@ void Juego(Tablero &tablero)
                 cout << "Uso: c <nombre del archivo>\n";
                 break;
             }
- 
+
             string rutaTableros = "Tableros/" + archivo;
             bool cargado = cargarTablero(rutaTableros, tablero);
- 
+
             if (!cargado)
                 cargado = cargarTablero(archivo, tablero);
- 
+
             if (cargado)
                 cout << "Tablero cargado exitosamente.\n";
             else
                 cout << "Error al cargar '" << archivo << "'. Verifica que el archivo exista en Tableros/ o en el directorio actual.\n";
             break;
         }
-
+        
 
         case 'j':
         {
-            int fila, columna, inicio, final_;
-            if (ss >> fila >> columna >> inicio >> final_)
-            {
-                // hacerMovimiento(tablero, fila, columna, inicio, final_);
-                cout << "(movimiento pendiente de implementar)\n";
-            }
+            int f1, c1, f2, c2;
+            if (ss >> f1 >> c1 >> f2 >> c2)
+                hacerMovimiento(tablero, f1, c1, f2, c2, historial);
             else
-            {
-                cout << "Uso: j <fila> <columna> <inicio> <final>\n";
-            }
+                cout << "Uso: j <fila1> <col1> <fila2> <col2>\n";
+            break;
+        }
+
+        case 'd':
+        {
+            int fila, col;
+            if (ss >> fila >> col)
+                borrarMovimiento(tablero, fila, col);
+            else
+                cout << "Uso: d <fila> <columna>\n";
             break;
         }
 
@@ -92,7 +101,7 @@ void Juego(Tablero &tablero)
         case 'l':
         {
             tablero = Tablero();
-            cout << "Tablero limpiado.\n";
+            historial.clear();
             break;
         }
 
