@@ -1,5 +1,6 @@
-#include "tablero.h"
+#include "../include/tablero.h"
 #include <map>
+
 
 bool cargarTablero(const std::string &archivo, Tablero &tablero)
 {

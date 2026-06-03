@@ -1,7 +1,7 @@
-#include "interfaz.h"
-#include "solucionador.h"
-#include "hacerMovimiento.h"
-#include "borrarMovimiento.h"
+#include "../include/interfaz.h"
+#include "../include/solucionador.h"
+#include "../include/hacerMovimiento.h"
+#include "../include/borrarMovimiento.h"
 
 void Ayudas()
 {

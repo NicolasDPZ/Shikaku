@@ -1,5 +1,5 @@
-#include "hacerMovimiento.h"
-#include "tablero.h"
+#include "../include/hacerMovimiento.h"
+#include "../include/tablero.h"
 #include <iostream>
 using namespace std;
 

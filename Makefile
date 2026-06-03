@@ -1,54 +1,24 @@
-# ============================================================
-#  Makefile — Shikaku
-# ============================================================
-
 CXX      = g++
-CXXFLAGS = -std=c++17 -Wall -Wextra
+CXXFLAGS = -std=c++17 -Wall -Wextra -Iinclude
+SRC_DIR  = src
+OBJ_DIR  = build
 
+SOURCES  = $(wildcard $(SRC_DIR)/*.cxx)
+OBJECTS  = $(patsubst $(SRC_DIR)/%.cxx, $(OBJ_DIR)/%.o, $(SOURCES))
 TARGET   = shikaku
 
-SRCS     = shikaku.cxx interfaz.cxx tablero.cxx solucionador.cxx hacerMovimiento.cxx borrarMovimiento.cxx 
-OBJS     = $(SRCS:.cxx=.o)
+.PHONY: all clean
 
-# ------------------------------------------------------------
-#  Regla principal: compilar todo
-# ------------------------------------------------------------
-all: $(TARGET)
+all: $(OBJ_DIR) $(TARGET)
 
-$(TARGET): $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJS)
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
 
-# ------------------------------------------------------------
-#  Reglas por archivo objeto
-# ------------------------------------------------------------
-shikaku.o: shikaku.cxx interfaz.h
-	$(CXX) $(CXXFLAGS) -c shikaku.cxx
+$(TARGET): $(OBJECTS)
+	$(CXX) $(CXXFLAGS) -o $@ $^
 
-interfaz.o: interfaz.cxx interfaz.h tablero.h solucionador.h
-	$(CXX) $(CXXFLAGS) -c interfaz.cxx
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cxx
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-tablero.o: tablero.cxx tablero.h
-	$(CXX) $(CXXFLAGS) -c tablero.cxx
-
-solucionador.o: solucionador.cxx solucionador.h tablero.h
-	$(CXX) $(CXXFLAGS) -c solucionador.cxx
-
-hacerMovimiento.o: hacerMovimiento.cxx hacerMovimiento.h tablero.h
-	$(CXX) $(CXXFLAGS) -c hacerMovimiento.cxx
-
-borrarMovimiento.o: borrarMovimiento.cxx borrarMovimiento.h tablero.h
-	$(CXX) $(CXXFLAGS) -c borrarMovimiento.cxx
-
-# ------------------------------------------------------------
-#  Ejecutar el juego directamente con: make run
-# ------------------------------------------------------------
-run: all
-	./$(TARGET)
-
-# ------------------------------------------------------------
-#  Limpiar archivos generados
-# ------------------------------------------------------------
 clean:
-	rm -f $(OBJS) $(TARGET)
-
-.PHONY: all run clean
+	rm -rf $(OBJ_DIR) $(TARGET)

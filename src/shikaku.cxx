@@ -1,5 +1,5 @@
 
-#include "interfaz.h"
+#include "../include/interfaz.h"
 #include <iostream>
 using namespace std;
  

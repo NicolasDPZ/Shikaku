@@ -1,4 +1,4 @@
-#include "borrarMovimiento.h"
+#include "../include/borrarMovimiento.h"
 #include <iostream>
 using namespace std;
 

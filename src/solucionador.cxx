@@ -1,4 +1,4 @@
-#include "solucionador.h"
+#include "../include/solucionador.h"
 #include <algorithm> // para sort
 
 // ===========================================================================
