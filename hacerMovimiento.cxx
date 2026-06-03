@@ -1,4 +1,5 @@
 #include "hacerMovimiento.h"
+#include "tablero.h"
 #include <iostream>
 using namespace std;
 
@@ -86,5 +87,10 @@ bool hacerMovimiento(Tablero &tablero, int fila1, int col1, int fila2, int col2,
 
     cout << "Rectangulo " << alto << "x" << ancho
          << " colocado. Pista " << valorPista << " cubierta.\n";
+
+    // Comprobar si el jugador ha ganado
+    if (validarTablero(tablero))
+        cout << "\n  *** FELICITACIONES, GANASTE! *** \n\n";
+
     return true;
 }
